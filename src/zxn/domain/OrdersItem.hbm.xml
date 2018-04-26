@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="zxn.domain.Orders">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="num" column="num"></property>
+		<property name="price" column="price"></property>
+		<!-- 
+			多对一
+			  column 外键
+		 -->
+		<many-to-one name="orders" class="zxn.domain.Orders" column="orders_id" cascade="save-update"></many-to-one>
+		<one-to-one name="book"></one-to-one>
+	</class>
+</hibernate-mapping>
